@@ -16,7 +16,7 @@ import os
 import sys
 from argparse import ArgumentParser
 
-from flask import Flask, request, abort
+from flask import Flask, request, abort, Blueprint, render_template, flash, redirect, url_for
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -42,6 +42,9 @@ if channel_access_token is None:
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
+@app.route("/main",methods=['GET'])
+def display_main() -> 'html':
+    return render_template('test.html',title='main')
 
 @app.route("/callback", methods=['POST'])
 def callback():
