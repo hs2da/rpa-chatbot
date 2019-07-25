@@ -29,6 +29,8 @@ from linebot.models import (
 
 app = Flask(__name__)
 
+body = None
+signature = None
 
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
@@ -84,7 +86,7 @@ def callback():
 def message_text(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)
+        TextSendMessage(text=event.reply_token)
     )
 
 if  __name__  ==  "__main__" :
