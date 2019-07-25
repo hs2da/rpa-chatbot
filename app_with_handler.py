@@ -37,10 +37,10 @@ def display_main() -> 'html':
 @app.route("/main",methods=['POST'])
 def test():
     # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
+    #signature = request.headers['X-Line-Signature']
 
     # get request body as text
-    body = request.get_data(as_text=True)
+    # body = request.get_data(as_text=True)
 
     handler.handle(body, signature)
 #def display_sub() -> 'html':
