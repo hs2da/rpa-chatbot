@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d04d9f6-0996-42a6-8c93-13d2a05943e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app_with_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_with_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_with_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="456">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -94,8 +94,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="408" />
     <option name="width" value="1130" />
     <option name="height" value="951" />
   </component>
@@ -151,15 +151,15 @@
       <workItem from="1563944833470" duration="4255000" />
       <workItem from="1563953356088" duration="311000" />
       <workItem from="1563974115995" duration="4196000" />
-      <workItem from="1564015535993" duration="3814000" />
+      <workItem from="1564015535993" duration="4112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14052000" />
+    <option name="totallyTimeSpent" value="14350000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1130" height="951" extended-state="0" />
+    <frame x="408" y="0" width="1130" height="951" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.257326" />
@@ -226,8 +226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_with_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="456">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
