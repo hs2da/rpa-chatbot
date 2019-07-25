@@ -11,12 +11,12 @@
 #  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #  License for the specific language governing permissions and limitations
 #  under the License.
-
+from flask import Blueprint, request, render_template, flash, redirect, url_for
 import os
 import sys
 from argparse import ArgumentParser
 
-from flask import Flask, request, abort, Blueprint, render_template, flash, redirect, url_for
+from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -29,7 +29,24 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-# get channel_secret and channel_access_token from your environment variable
+
+@app.route("/main",methods=['GET'])
+def display_main() -> 'html':
+    return render_template('test.html',title='main')
+
+@app.route("/main",methods=['POST'])
+def test():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+
+    # get request body as text
+    body = request.get_data(as_text=True)
+
+    handler.handle(body, signature)
+#def display_sub() -> 'html':
+#   return render_template('sub.html',title='sub')
+
+get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 if channel_secret is None:
@@ -42,9 +59,8 @@ if channel_access_token is None:
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
-@app.route("/main",methods=['GET'])
-def display_main() -> 'html':
-    return render_template('test.html',title='main')
+
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -71,8 +87,7 @@ def message_text(event):
         TextSendMessage(text=event.message.text)
     )
 
-
 if  __name__  ==  "__main__" :
-# app.run ()
+    #app.run ()
     port  =  int ( os . getenv ( "PORT" ))
-    app . run ( host = "0.0.0.0" ,  port = port )
+    app . run ( host = "0.0.0.0" ,  port = 8000)
