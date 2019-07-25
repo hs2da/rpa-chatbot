@@ -29,8 +29,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-body = None
-signature = None
+
 
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
@@ -38,15 +37,11 @@ def display_main() -> 'html':
 
 @app.route("/main",methods=['POST'])
 def test():
-    # get X-Line-Signature header value
-    #signature = request.headers['X-Line-Signature']
+     ptr = request.form['학번']
+     testReply(ptr)
 
-    # get request body as text
-    # body = request.get_data(as_text=True)
 
-    handler.handle(body, signature)
-#def display_sub() -> 'html':
-#   return render_template('sub.html',title='sub')
+
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
@@ -87,6 +82,12 @@ def message_text(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.reply_token)
+    )
+
+def testReply(RP):
+    line_bot_api.reply_message(
+        RP,
+        TextSendMessage(text="success")
     )
 
 if  __name__  ==  "__main__" :
