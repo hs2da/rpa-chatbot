@@ -46,7 +46,7 @@ def test():
 #def display_sub() -> 'html':
 #   return render_template('sub.html',title='sub')
 
-get channel_secret and channel_access_token from your environment variable
+# get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 if channel_secret is None:
