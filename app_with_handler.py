@@ -14,6 +14,7 @@
 from flask import Blueprint, request, render_template, flash, redirect, url_for
 import os
 import sys
+import logging
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -70,7 +71,8 @@ def callback():
 
     # handle webhook body
     try:
-        handler.handle(body, signature)
+        logging.error(body.reply_token)
+        #handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
 
@@ -79,10 +81,11 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    line_bot_api.reply_message(
+    logging.error(event.reply_token)
+    """line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.reply_token)
-    )
+    )"""
 
 def testReply(RP):
     line_bot_api.reply_message(
