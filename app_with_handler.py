@@ -87,10 +87,14 @@ def message_text(event):
     )"""
 
 def testReply(RP):
-    line_bot_api.reply_message(
+    line_bot_api.push_message(
         RP,
         TextSendMessage(text="success")
     )
+    """line_bot_api.reply_message(
+        RP,
+        TextSendMessage(text="success")
+    )"""
 
 if  __name__  ==  "__main__" :
     #app.run ()
