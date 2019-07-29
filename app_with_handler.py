@@ -39,7 +39,8 @@ def display_main() -> 'html':
 @app.route("/main",methods=['POST'])
 def test():
      ptr = request.form['학번']
-     testReply(ptr)
+     txt = request.form['이름']
+     testReply(ptr,txt)
 
 
 
@@ -86,11 +87,11 @@ def message_text(event):
         TextSendMessage(text=event.reply_token)
     )"""
 
-def testReply(RP):
+def testReply(RP,txt):
     line_bot_api.push_message(
         RP,
-        TextSendMessage(text="success")
-    )
+        TextSendMessage(text = txt)
+        )
     """line_bot_api.reply_message(
         RP,
         TextSendMessage(text="success")
