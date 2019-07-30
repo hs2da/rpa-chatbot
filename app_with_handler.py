@@ -35,7 +35,6 @@ app = Flask(__name__)
 
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
-    r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess", {'projectId': 1, 'processId': 1})
     return render_template('test.html',title='main')
 
 @app.route("/main",methods=['POST'])
@@ -43,8 +42,6 @@ def test():
      ptr = request.form['학번']
      txt = request.form['이름']
      testReply(ptr,txt)
-
-
 
 
 # get channel_secret and channel_access_token from your environment variable
@@ -75,7 +72,8 @@ def callback():
     # handle webhook body
     try:
         handler.handle(body, signature)
-
+        r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess",
+                          {'projectId': 1, 'processId': 1})
     except InvalidSignatureError:
         abort(400)
 
