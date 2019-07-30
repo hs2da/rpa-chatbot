@@ -72,8 +72,6 @@ def callback():
     # handle webhook body
     try:
         handler.handle(body, signature)
-        r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess",
-                          {'projectId': 1, 'processId': 1})
     except InvalidSignatureError:
         abort(400)
 
@@ -89,6 +87,8 @@ def message_text(event):
     )"""
 
 def testReply(RP,txt):
+    r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess",
+                      {'projectId': 1, 'processId': 1})
     line_bot_api.push_message(
         RP,
         TextSendMessage(text = txt)
