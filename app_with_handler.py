@@ -34,6 +34,7 @@ app = Flask(__name__)
 
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
+    r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess", {'projectId': 1, 'processId': 1})
     return render_template('test.html',title='main')
 
 @app.route("/main",methods=['POST'])
@@ -73,6 +74,7 @@ def callback():
     # handle webhook body
     try:
         handler.handle(body, signature)
+
     except InvalidSignatureError:
         abort(400)
 
