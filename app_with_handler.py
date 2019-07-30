@@ -15,6 +15,7 @@ from flask import Blueprint, request, render_template, flash, redirect, url_for
 import os
 import sys
 import logging
+import requests
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -72,6 +73,7 @@ def callback():
     # handle webhook body
     try:
         handler.handle(body, signature)
+        r = requests.post("http://8147edb6.ngrok.io:8080/automateone/api/v1/runProcess", {'projectId': 1, 'processId': 1})
     except InvalidSignatureError:
         abort(400)
 
