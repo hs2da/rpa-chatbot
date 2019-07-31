@@ -87,12 +87,11 @@ def message_text(event):
     )"""
 
 def testReply(RP,txt):
-    r = requests.post("http://2cb69864.ngrok.io/automateone",
-                      {'projectId': 1, 'processId': 1})
-    line_bot_api.push_message(
+    r = requests.get("http://49708230.ngrok.io/automateone")
+    """line_bot_api.push_message(
         RP,
         TextSendMessage(text = txt)
-        )
+        )"""
     """line_bot_api.reply_message(
         RP,
         TextSendMessage(text="success")
