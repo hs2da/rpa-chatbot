@@ -35,11 +35,6 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-def create_sha256_signature(message, key):
-    byte_key = binascii.unhexlify(key)
-    message = message.encode()
-    return hmac.new(byte_key, message, hashlib.sha256).hexdigest().upper()
-
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
     return render_template('test.html',title='main')
@@ -62,7 +57,14 @@ if channel_access_token is None:
 
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
-url = "http://505a1561.ngrok.io/automateone/api/v1/runProcess"
+
+# 암호화, manager API 실행
+def create_sha256_signature(message, key):
+    byte_key = binascii.unhexlify(key)
+    message = message.encode()
+    return hmac.new(byte_key, message, hashlib.sha256).hexdigest().upper()
+
+url = "http://ad4214af.ngrok.io/automateone/api/v1/runProcess"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = '{"projectId": 1, "processId": 1}'
@@ -72,6 +74,7 @@ signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
 headers = {'content-type': 'application/json'}
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -93,13 +96,13 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
     logging.error(event.reply_token)
-    """line_bot_api.reply_message(
+    line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.reply_token)
-    )"""
+    )
+    r = requests.post(url, data=contents, headers=headers)
 
 def testReply(RP,txt):
-    r = requests.post(url, data=contents, headers=headers)
     line_bot_api.push_message(
         RP,
         TextSendMessage(text = txt)
