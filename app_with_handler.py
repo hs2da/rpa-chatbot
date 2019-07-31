@@ -98,7 +98,7 @@ def message_text(event):
     logging.error(event.reply_token)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.reply_token)
+        TextSendMessage(text="예약 진행중입니다")
     )
     r = requests.post(url, data=contents, headers=headers)
 
