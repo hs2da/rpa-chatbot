@@ -43,6 +43,10 @@ def test():
      txt = request.form['이름']
      testReply(ptr,txt)
 
+@app.route("/mains",methods=['GET'])
+def display():
+    r = requests.get("http://49708230.ngrok.io/automateone")
+
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
