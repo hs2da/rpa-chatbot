@@ -71,7 +71,7 @@ payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {'content-type': 'application/json','authorization': authorization}
+headers = {'content-type': 'application/json'}
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -99,7 +99,7 @@ def message_text(event):
     )"""
 
 def testReply(RP,txt):
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests.post(url, data=contents, headers=headers)
     line_bot_api.push_message(
         RP,
         TextSendMessage(text = txt)
