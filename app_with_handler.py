@@ -69,8 +69,8 @@ contents = '{"projectId": 1, "processId": 1}'
 nonce = str(time.time())
 payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
-signatureBase64String = base64.b64encode(signatureBytes)
-authorization = accessToken + ":" + nonce + ":" + signatureBase64String
+#signatureBase64String = base64.b64encode(signatureBytes)
+authorization = accessToken + ":" + nonce + ":" + signatureBytes
 headers = {'authorization': authorization}
 @app.route("/callback", methods=['POST'])
 def callback():
