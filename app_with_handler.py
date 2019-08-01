@@ -67,7 +67,7 @@ def create_sha256_signature(message, key):
 url = "http://46ec6ee9.ngrok.io/automateone/api/v1/runProcessWithDataset"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
-contents = '{"projectId": 1, "processId": 2, "dataset":{"ID":Uce275b6ee9ce7f001a4540c74e1304fa,"Message":ㅇㅇ}}'
+contents = '{"projectId": 1, "processId": 2, "dataset":{"ID":Uce275b6ee9ce7f001a4540c74e1304fa,"Message":success}}'
 nonce = str(time.time())
 payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
@@ -100,7 +100,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text="예약 진행중입니다")
     )
-    r = requests.post(url, data=contents.encode('utf-8'), headers=headers)
+    r = requests.post(url, data=contents, headers=headers)
 
 def testReply(RP,txt):
     line_bot_api.push_message(
