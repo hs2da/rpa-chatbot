@@ -100,7 +100,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text="예약 진행중입니다")
     )
-    r = requests.post(url, data=contents, headers=headers)
+    r = requests.post(url, data=contents.encode('utf-8'), headers=headers)
 
 def testReply(RP,txt):
     line_bot_api.push_message(
