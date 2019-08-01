@@ -68,6 +68,7 @@ url = "http://01b247a3.ngrok.io/automateone/api/v1/runProcessWithDataset"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = '{"projectId": 1, "processId": 2, "dataset":{"ID":"Uce275b6ee9ce7f001a4540c74e1304fa","Message":"ㅇ" }}'
+contents.encode('utf-8')
 nonce = str(time.time())
 payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
