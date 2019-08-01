@@ -73,7 +73,7 @@ payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {'content-type': 'application/json; charset=UTF-8'}
+headers = {"content-type": "application/json; charset=UTF-8"}
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -100,7 +100,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text="예약 진행중입니다")
     )
-    r = requests.post(url, data=contents.encode('UTF-8'), headers=headers)
+    r = requests.post(url, data=contents.encode("UTF-8"), headers=headers)
 
 def testReply(RP,txt):
     line_bot_api.push_message(
