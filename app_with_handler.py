@@ -64,7 +64,7 @@ def create_sha256_signature(message, key):
     message = message.encode()
     return hmac.new(byte_key, message, hashlib.sha256).hexdigest().upper()
 
-url = "http://ad4214af.ngrok.io/automateone/api/v1/runProcess"
+url = "http://46ec6ee9.ngrok.io/automateone/api/v1/runProcess"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = '{"projectId": 1, "processId": 1}'
