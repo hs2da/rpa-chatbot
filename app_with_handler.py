@@ -22,6 +22,7 @@ import hmac
 import hashlib
 import binascii
 import base64
+import regex_rule
 from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
@@ -98,7 +99,7 @@ def message_text(event):
     logging.error(event.reply_token)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="예약 진행중입니다")
+        TextSendMessage(text=regex_rule.parseWorld(event.message.text))
     )
     r = requests.post(url, data=contents, headers=headers)
 
@@ -107,12 +108,8 @@ def testReply(RP,txt):
         RP,
         TextSendMessage(text = txt)
         )
-    """line_bot_api.reply_message(
-        RP,
-        TextSendMessage(text="success")
-    )"""
 
 if  __name__  ==  "__main__" :
-    #app.run ()
-    port  =  int ( os . getenv ( "PORT" ))
-    app . run ( host = "0.0.0.0" ,  port = port)
+    app.run ()
+    #port  =  int ( os . getenv ( "PORT" ))
+    #app . run ( host = "0.0.0.0" ,  port = port)
