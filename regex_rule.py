@@ -1,7 +1,6 @@
 import re
 
 def parseWorld(text):
-	#text = "에러 1122 : 레퍼런스 오류\n 에러 1033: 아규먼트 오류"
 	regex = re.compile("(여행예약|예약|여기로)(\s|\S)[^안]해?")
 	mo = regex.search(text)
 	if(mo != None):
