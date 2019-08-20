@@ -74,9 +74,8 @@ payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {"content-type": "application/json; charset=UTF-8"}
-contents.encode('utf-8')
-
+headers = {"content-type": 'application/json; charset=utf-8'}
+contents.decode('cp949').encode('utf-8')
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
