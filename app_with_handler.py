@@ -46,6 +46,9 @@ def test():
      txt = request.form['이름']
      testReply(ptr,txt)
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
@@ -69,7 +72,6 @@ url = "http://3cc07f8c.ngrok.io/automateone/api/v1/runProcessWithDataset"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = '{"projectId": 1, "processId": 2, "dataset":{"ID":"Uce275b6ee9ce7f001a4540c74e1304fa","Message":"성공" }}'
-contents.encode('cp949').decode('utf-8')
 nonce = str(time.time())
 payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
