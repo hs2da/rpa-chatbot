@@ -69,12 +69,13 @@ url = "http://3cc07f8c.ngrok.io/automateone/api/v1/runProcessWithDataset"
 accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = '{"projectId": 1, "processId": 2, "dataset":{"ID":"Uce275b6ee9ce7f001a4540c74e1304fa","Message":"성공" }}'
+contents.encode('cp949').decode('utf-8')
 nonce = str(time.time())
 payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {"content-type": 'text/plain; charset=utf-8'}
+headers = {"content-type": 'application/json; charset=utf-8'}
 
 @app.route("/callback", methods=['POST'])
 def callback():
