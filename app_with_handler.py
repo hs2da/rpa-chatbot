@@ -72,10 +72,10 @@ accessToken = "test"
 secretKey = "098F6BCD4621D373CADE4E832627B4F6"
 contents = urlencode({"projectId": 1, "processId": 2, "dataset":{"ID":"Uce275b6ee9ce7f001a4540c74e1304fa","Message":"성공" }}).encode()
 nonce = str(time.time())
-payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
-signatureBytes = create_sha256_signature(payload, secretKey)
+#payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
+#signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
-authorization = accessToken + ":" + nonce + ":" + signatureBytes
+#authorization = accessToken + ":" + nonce + ":" + signatureBytes
 headers = {'content-type': 'application/x-wwww-form-urlencoded; charset=utf-8'}
 
 @app.route("/callback", methods=['POST'])
