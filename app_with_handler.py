@@ -75,7 +75,7 @@ payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {'content-type': 'application/json; charset=utf-8'}
+headers = {'content-type': 'application/x-wwww-form-urlencoded; charset=utf-8'}
 
 @app.route("/callback", methods=['POST'])
 def callback():
