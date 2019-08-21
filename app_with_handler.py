@@ -46,8 +46,6 @@ def test():
      txt = request.form['이름']
      testReply(ptr,txt)
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
@@ -77,7 +75,7 @@ payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
 signatureBytes = create_sha256_signature(payload, secretKey)
 #signatureBase64String = base64.b64encode(signatureBytes)
 authorization = accessToken + ":" + nonce + ":" + signatureBytes
-headers = {"content-type": 'application/json; charset=utf-8'}
+headers = {'content-type': 'application/json; charset=utf-8'}
 
 @app.route("/callback", methods=['POST'])
 def callback():
