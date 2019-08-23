@@ -24,6 +24,7 @@ import binascii
 import base64
 import regex_rule
 from urllib.parse import urlencode
+from firebase import firebase
 from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
@@ -47,6 +48,11 @@ def test():
      txt = request.form['이름']
      testReply(ptr,txt)
 
+firebase = firebase.FirebaseApplication('https://rolypoly-59183.firebaseio.com', None)
+new_user = 'test'
+
+result = firebase.post('/users', new_user, {'print':'pretty'},{'X_FANCY_HEADER': 'VERY FANCY'})
+print result
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
