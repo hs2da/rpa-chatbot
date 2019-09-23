@@ -23,3 +23,14 @@ def parseWorld(text):
 
 	if(mo == None):
 		return "요청하신 기능은 저희가 지원 안합니다. 도움말 요청해주세요" + "향후 학습을 위해 사용자의 입력 데이터 저장"
+
+
+def parseSentence(text):
+	arr = re.findall("\d+", text)
+	if(arr is None):
+		return "다시 입력해 주세요"
+	else:
+		return arr[0]+"월"+arr[1]+"일 맞습니까?"
+
+
+

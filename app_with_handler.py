@@ -107,7 +107,7 @@ def message_text(event):
     logging.error(event.reply_token)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=regex_rule.parseWorld(event.message.text))
+        TextSendMessage(text=regex_rule.parseSentence(event.message.text))
     )
     r = requests.post(url, data=contents, headers=headers)
 
