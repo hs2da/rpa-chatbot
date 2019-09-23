@@ -24,6 +24,10 @@ def parseWorld(text):
 	if(mo == None):
 		return "요청하신 기능은 저희가 지원 안합니다. 도움말 요청해주세요" + "향후 학습을 위해 사용자의 입력 데이터 저장"
 
+# 	re.split('\s+', text) - 공백 여러개 기준 split
+# 	re.findall('\d+', text) - 숫자로 이루어진 문자열 리스트 변환
+#	re.findall('[A-Z]', text) - 대문자 리스트 변환
+#	re.findall('[A-Z][a-z]+', text)
 
 def parseSentence(text):
 	arr = re.findall("\d+", text)
@@ -32,5 +36,9 @@ def parseSentence(text):
 	else:
 		return arr[0]+"월"+arr[1]+"일 맞습니까?"
 
-
+def scenario1(text):
+	arr = re.split(" ",text)
+   	for i in arr:
+      		if arr[i] == "예약":
+    			return "여행 일자를 말해주세요"
 
