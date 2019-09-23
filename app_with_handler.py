@@ -84,6 +84,7 @@ nonce = str(time.time())
 #authorization = accessToken + ":" + nonce + ":" + signatureBytes
 headers = {'content-type': 'application/x-wwww-form-urlencoded; charset=utf-8'}
 
+flag = False
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -105,9 +106,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
     logging.error(event.reply_token)
-    flag = False
 
-    if flag==False:
+    if flag == False:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=regex_rule.scenario1(event.message.text))
