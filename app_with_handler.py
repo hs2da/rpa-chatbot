@@ -105,10 +105,19 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
     logging.error(event.reply_token)
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=regex_rule.scenario1(event.message.text))
-    )
+    flag = False
+
+    if flag==False:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=regex_rule.scenario1(event.message.text))
+        )
+        flag = True
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=regex_rule.parseSentence(event.message.text))
+        )
     r = requests.post(url, data=contents, headers=headers)
 
 def testReply(RP,txt):

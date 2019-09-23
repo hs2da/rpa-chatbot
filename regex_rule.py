@@ -31,13 +31,13 @@ def parseWorld(text):
 
 def parseSentence(text):
 	arr = re.findall("\d+", text)
-	if(arr is None):
+	if not arr:
 		return "다시 입력해 주세요"
 	else:
-		return arr[0]+"월"+arr[1]+"일 맞습니까?"
+		return arr[0]+"월 "+arr[1]+"일 맞습니까?"
 
 def scenario1(text):
-	arr = re.split(" ",text)
+	arr = re.split(" ", text)
    	for i in arr:
 		if arr[i] == "예약":
 			return "여행 일자를 말해주세요"
