@@ -39,6 +39,6 @@ def parseSentence(text):
 def scenario1(text):
 	arr = re.split(" ",text)
    	for i in arr:
-      		if arr[i] == "예약":
-    			return "여행 일자를 말해주세요"
+		if arr[i] == "예약":
+			return "여행 일자를 말해주세요"
 
