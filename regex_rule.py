@@ -38,7 +38,11 @@ def parseSentence(text):
 
 def scenario1(text):
 	arr = re.split(" ", text)
+	arr1 = re.findall("\d+", text)
 	for i in arr:
 		if i=="예약":
 			return "예약날짜를 입력해주세요"
-
+	if not arr1:
+		return "다시 입력해 주세요 "
+	else:
+		return arr[0]+"월 "+arr[1]+"일 맞습니까?"
