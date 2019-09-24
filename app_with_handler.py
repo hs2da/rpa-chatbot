@@ -108,7 +108,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text=regex_rule.scenario1(event.message.text))
     )
-    r = requests.post(url, data=contents, headers=headers)
+    #r = requests.post(url, data=contents, headers=headers)
 
 def testReply(RP,txt):
     line_bot_api.push_message(
