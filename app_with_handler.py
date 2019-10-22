@@ -71,7 +71,16 @@ def create_sha256_signature(message, key):
     message = message.encode()
     return hmac.new(byte_key, message, hashlib.sha256).hexdigest().upper()
 
-
+url = "http://9327549e.ngrok.io/automateone/api/v1/runProcessWithDataset"
+#accessToken = "test"
+#secretKey = "098F6BCD4621D373CADE4E832627B4F6"
+contents = {"projectId": 1, "processId": 2, "dataset":{"ID":"Uce275b6ee9ce7f001a4540c74e1304fa","Message":"success" }}
+#nonce = str(time.time())
+#payload = url + '\n' + accessToken + '\n' + nonce + '\n' + contents + '\n'
+#signatureBytes = create_sha256_signature(payload, secretKey)
+#signatureBase64String = base64.b64encode(signatureBytes)
+#authorization = accessToken + ":" + nonce + ":" + signatureBytes
+headers = {'content-type': 'application/json; charset=utf-8'}
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -103,6 +112,9 @@ def testReply(RP,txt):
         RP,
         TextSendMessage(text = txt)
         )
+
+def start():
+    r = requests.post(url, data=contents, headers=headers)
 
 if  __name__  ==  "__main__" :
     #app.run ()
