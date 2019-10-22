@@ -21,6 +21,11 @@ def parseWorld(text):
 	if(mo != None):
 		return checkReservation(text)
 
+	regex = re.compile("60")
+	mo = regex.search(text)
+	if (mo != None):
+		return checkReservation(text)
+
 	regex = re.compile("예")
 	mo = regex.search(text)
 	if (mo != None):
