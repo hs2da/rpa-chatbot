@@ -59,17 +59,17 @@ def checkReservation(text):
 	result = text.split(',')
 	arr = ["0","0","0","0","0"]
 	arr = result
-	for i in arr:
-		if(arr[i]=="0"):
-			if(i==0):
+	for index, value in enumerate(arr):
+		if(value=="0"):
+			if(index==0):
 				message+= "목적도시, "
-			if(i==1):
+			if(index==1):
 				message += "출발도시, "
-			if(i==2):
+			if(index==2):
 				message += "출발날짜, "
-			if(i==3):
+			if(index==3):
 				message += "가격범위, "
-			if(i==4):
+			if(index==4):
 				message += "인원수, "
 		message+="를 입력해주세요."
 	return message
