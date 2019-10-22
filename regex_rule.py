@@ -63,3 +63,4 @@ def checkReservation(text):
 
 def startRPA(text):
 	message = "입력하신 정보를 바탕으로 예약을 진행하겠습니다."
+	return message
