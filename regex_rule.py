@@ -55,24 +55,35 @@ def checkInfo(text):
 	return message
 
 def checkReservation(text):
-	message =""
-	result = text.split(',')
+	message=""
+	result = text.split(' ')
 	arr = ["0","0","0","0","0"]
 	arr = result
-	for index, value in enumerate(arr):
-		if(value=="0"):
-			if(index==0):
-				message+= "목적도시, "
-			if(index==1):
-				message += "출발도시, "
-			if(index==2):
-				message += "출발날짜, "
-			if(index==3):
-				message += "가격범위, "
-			if(index==4):
-				message += "인원수, "
-		message+="를 입력해주세요."
-	return message
+	dest = ["방콕","서울"]
+	start = ["방콕","서울"]
+	date = ["11-21"]
+	price = ["60 80"]
+	num = ["성인 1"]
+
+	for i in dest:
+		if i!=arr[0]:
+			message+="목적도시, "
+	for i in start:
+		if i!=arr[1]:
+			message+="출발도시, "
+	for i in date:
+		if i!=arr[2]:
+			message+="출발날짜, "
+	for i in price:
+		if i!=arr[3]:
+			message+="가격범위, "
+	for i in num:
+		if i!=arr[4]:
+			message+="인원수 "
+
+	if(message!=""):
+		return message+"정보가 부족합니다."
+
 
 	reservation = ["방콕","인천","11월21일","60만원~80만원","성인 1"]
 	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격범위: " + reservation[
