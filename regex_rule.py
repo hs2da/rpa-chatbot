@@ -21,8 +21,13 @@ def parseWorld(text):
 	if(mo != None):
 		return checkReservation(text)
 
+	regex = re.compile("예")
+	mo = regex.search(text)
+	if (mo != None):
+		return startRPA(text)
+
 	if(mo == None):
-		return "요청하신 기능은 저희가 지원 안합니다. 도움말 요청해주세요" + "향후 학습을 위해 사용자의 입력 데이터 저장"
+		return "다시 입력해 주세요"
 
 # 	re.split('\s+', text) - 공백 여러개 기준 split
 # 	re.findall('\d+', text) - 숫자로 이루어진 문자열 리스트 변환
@@ -53,5 +58,8 @@ def checkInfo(text):
 def checkReservation(text):
 	reservation = ["방콕","서울","10월10일","100","4"]
 	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격: " + reservation[
-		3] + '\n' + "인원수: " + reservation[4] + '\n' + "이 맞습니까?"
+		3]+"만원" + '\n' + "인원수: " + reservation[4] + "명" '\n' + "이 맞습니까?"
 	return message
+
+def startRPA(text):
+	message = "입력하신 정보를 바탕으로 예약을 진행하겠습니다."
