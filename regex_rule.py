@@ -59,7 +59,7 @@ def checkReservation(text):
 	result = text.split(',')
 	arr = ["0","0","0","0","0"]
 	arr = result
-	if(i in arr):
+	for i in arr:
 		if(arr[i]=="0"):
 			if(i==0):
 				message+= "목적도시, "
