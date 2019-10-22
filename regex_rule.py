@@ -1,15 +1,15 @@
 import re
 
 def parseWorld(text):
-	regex = re.compile("(여행예약|예약|여기로)(\s|\S)[^안]해?")
+	regex = re.compile("(여행정보)(\s|\S)[^안]해?")
 	mo = regex.search(text)
 	if(mo != None):
-		return "예약 해드리겠습니다."
+		return scenario2(text)
 
 	regex = re.compile("(종료|그만|꺼)(\s|\S)[^안](줘?|주?)")
 	mo = regex.search(text)
 	if(mo != None):
-		return "시스템을 종료합니다. "
+		return "시스템을 종료합니다."
 
 	regex = re.compile("(추천|좋은것|관광|코스)(\s|\S)(해?|(알려|말해)줘?)")
 	mo = regex.search(text)
@@ -48,3 +48,7 @@ def scenario1(text):
 		return "다시 입력해 주세요."
 	else:
 		return arr[0]+arr[1]+" 맞습니까?"
+
+def scenario2(text):
+	message = "이름, 성별, 생년월일, 휴대폰 번호, 요청사항을 말씀해주세요."
+	return message
