@@ -6,10 +6,10 @@ def parseWorld(text):
 	if(mo != None):
 		return scenario2(text)
 
-	regex = re.compile("(종료|그만|꺼)(\s|\S)[^안](줘?|주?)")
+	regex = re.compile("홍길동")
 	mo = regex.search(text)
 	if(mo != None):
-		return "시스템을 종료합니다."
+		return checkInfo(text)
 
 	regex = re.compile("(추천|좋은것|관광|코스)(\s|\S)(해?|(알려|말해)줘?)")
 	mo = regex.search(text)
@@ -51,4 +51,12 @@ def scenario1(text):
 
 def scenario2(text):
 	message = "이름, 성별, 생년월일, 휴대폰 번호, 요청사항을 말씀해주세요."
+	return message
+
+def checkInfo(text):
+	arr = re.split(" ",text)
+	info = ["홍길동", "Hong Kil Dong", "남", "950101", "01012341234", "요청사항..." ]
+	for i in arr:
+		info[i]=arr[i]
+	message = "이름: "+info[0]+'\n'+"성별: "+info[1]+'\n'+"생년월일: "+info[2]+'\n'+"휴대폰 번호: "+info[3]+'\n'+"요청사항: "+info[4]+'\n'+ "이 맞습니까?"
 	return message
