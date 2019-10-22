@@ -55,8 +55,6 @@ def scenario2(text):
 
 def checkInfo(text):
 	arr = re.split(" ",text)
-	info = ["홍길동", "Hong Kil Dong", "남", "950101", "01012341234", "요청사항..." ]
-	for i in arr:
-		info[i]=arr[i]
+	info = ["홍길동", "Hong Kil Dong", "남", "950101", "01012341234", "요청사항..."]
 	message = "이름: "+info[0]+'\n'+"성별: "+info[1]+'\n'+"생년월일: "+info[2]+'\n'+"휴대폰 번호: "+info[3]+'\n'+"요청사항: "+info[4]+'\n'+ "이 맞습니까?"
 	return message
