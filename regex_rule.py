@@ -105,7 +105,7 @@ def checkReservation(text):
 		return message+"정보를 입력해주세요"
 
 
-	reservation = ["방콕","인천","11월21일","60만원~80만원","성인 1"]
+	reservation = ["방콕","서울","11월21일","60만원~80만원","성인 1"]
 	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격범위: " + reservation[
 		3]+ '\n' + "인원수: " + reservation[4] + "명" +'\n' + "이 맞습니까?"
 	return message
