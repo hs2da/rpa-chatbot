@@ -52,6 +52,6 @@ def checkInfo(text):
 
 def checkReservation(text):
 	reservation = ["방콕","서울","10월10일","100","4"]
-	message = "목적 도시: " + info[0] + '\n' + "출발 도시: " + info[1] + '\n' + "출발 날짜: " + info[2] + '\n' + "가격: " + info[
-		3] + '\n' + "인원수: " + info[4] + '\n' + "이 맞습니까?"
+	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격: " + reservation[
+		3] + '\n' + "인원수: " + reservation[4] + '\n' + "이 맞습니까?"
 	return message
