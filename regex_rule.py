@@ -11,15 +11,15 @@ def parseWorld(text):
 	if(mo != None):
 		return checkInfo(text)
 
-	regex = re.compile("(추천|좋은것|관광|코스)(\s|\S)(해?|(알려|말해)줘?)")
+	regex = re.compile("네")
 	mo = regex.search(text)
 	if(mo != None):
-		return "관광 코스를 추천해 드리겠습니다. "
+		return scenario1(text)
 
-	regex = re.compile("(기능|도움말|도움)(\s|\S)(알려줘?|뭐야?)")
+	regex = re.compile("방콕")
 	mo = regex.search(text)
 	if(mo != None):
-		return "***도움말***\n1.예약 기능 : 원하시는 패키지를 예약해 드립니다.\n2.추천 기능 : 고객님의 요구에 맞게 패키지 추천해드립니다.\n3.종료 기능 : 프로그램을 종료합니다.\n4.도움말 기능 : 도움말을 출력합니다.\n"
+		return checkReservation(text)
 
 	if(mo == None):
 		return "요청하신 기능은 저희가 지원 안합니다. 도움말 요청해주세요" + "향후 학습을 위해 사용자의 입력 데이터 저장"
@@ -37,24 +37,21 @@ def parseSentence(text):
 		return arr[0]+"월 "+arr[1]+"일 맞습니까?"
 
 def scenario1(text):
-	arr = re.split(" ", text)
-	arr1 = re.findall("\d+", text)
-	for i in arr:
-		if i=="예약":
-			return "예약날짜를 입력해주세요"
-		elif i=="네":
-			return "해당 날짜의 상품 검색을 진행하겠습니다."
-	if not arr1:
-		return "다시 입력해 주세요."
-	else:
-		return arr[0]+arr[1]+" 맞습니까?"
+	message = "목적 도시, 출발 도시, 출발 날짜(월 일), 가격, 인원수를 알려주세요."
+	return message
 
 def scenario2(text):
-	message = "이름, 성별, 생년월일, 휴대폰 번호, 요청사항을 말씀해주세요."
+	message = "이름(한국),이름(영어), 성별, 생년월일, 휴대폰 번호, 요청사항을 알려주세요."
 	return message
 
 def checkInfo(text):
 	arr = re.split(" ",text)
 	info = ["홍길동", "Hong Kil Dong", "남", "950101", "01012341234", "요청사항..."]
-	message = "이름: "+info[0]+'\n'+"성별: "+info[1]+'\n'+"생년월일: "+info[2]+'\n'+"휴대폰 번호: "+info[3]+'\n'+"요청사항: "+info[4]+'\n'+ "이 맞습니까?"
+	message = "이름(한국): "+info[0]+'\n'+"이름(영어): "+info[1]+'\n'+"성별: "+info[2]+'\n'+"생년월일: "+info[3]+'\n'+"휴대폰 번호: "+info[4]+'\n'+"요청사항: "+info[5]+'\n'+ "이 맞습니까?"
+	return message
+
+def checkReservation(text):
+	reservation = ["방콕","서울","10월10일","100","4"]
+	message = "목적 도시: " + info[0] + '\n' + "출발 도시: " + info[1] + '\n' + "출발 날짜: " + info[2] + '\n' + "가격: " + info[
+		3] + '\n' + "인원수: " + info[4] + '\n' + "이 맞습니까?"
 	return message
