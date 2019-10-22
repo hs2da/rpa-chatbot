@@ -42,23 +42,22 @@ def parseSentence(text):
 		return arr[0]+"월 "+arr[1]+"일 맞습니까?"
 
 def scenario1(text):
-	message = "목적 도시, 출발 도시, 출발 날짜(월 일), 가격, 인원수를 알려주세요."
+	message = "목적 도시, 출발 도시, 출발 날짜(월 일), 가격범위(최소-최대 (만원)), 인원수를 알려주세요.\n ex) 제주도, 서울, 11-21, 60 80, 성인 1"
 	return message
 
 def scenario2(text):
-	message = "이름(한국),이름(영어), 성별, 생년월일, 휴대폰 번호, 요청사항을 알려주세요."
+	message = "이름(한국),이름(영어), 성별, 생년월일, 휴대폰 번호, 요청사항, 이메일을 알려주세요.\n ex) 홍길동, Hong KilDong, 남, 19950101, 01012341234, 요청사항.., example@example.com"
 	return message
 
 def checkInfo(text):
-	arr = re.split(" ",text)
-	info = ["홍길동", "Hong Kil Dong", "남", "950101", "01012341234", "요청사항..."]
-	message = "이름(한국): "+info[0]+'\n'+"이름(영어): "+info[1]+'\n'+"성별: "+info[2]+'\n'+"생년월일: "+info[3]+'\n'+"휴대폰 번호: "+info[4]+'\n'+"요청사항: "+info[5]+'\n'+ "이 맞습니까?"
+	info = ["김형우", "KIM HYOUNGWOO", "남", "19951011", "01057424538", "테스트하기위한 예약 진행중입니다.", "gustjr1259@naver.com"]
+	message = "이름(한국): "+info[0]+'\n'+"이름(영어): "+info[1]+'\n'+"성별: "+info[2]+'\n'+"생년월일: "+info[3]+'\n'+"휴대폰 번호: "+info[4]+'\n'+"요청사항: "+info[5]+'\n'+"이메일: "+info[6]+'\n'+"이 맞습니까?"
 	return message
 
 def checkReservation(text):
-	reservation = ["방콕","서울","10월10일","100","4"]
-	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격: " + reservation[
-		3]+"만원" + '\n' + "인원수: " + reservation[4] + "명" '\n' + "이 맞습니까?"
+	reservation = ["방콕","인천","11월21일","60만원 80만원","성인 1"]
+	message = "목적 도시: " + reservation[0] + '\n' + "출발 도시: " + reservation[1] + '\n' + "출발 날짜: " + reservation[2] + '\n' + "가격범위: " + reservation[
+		3]+ '\n' + "인원수: " + reservation[4] + "명" +'\n' + "이 맞습니까?"
 	return message
 
 def startRPA(text):
