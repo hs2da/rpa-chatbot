@@ -7,7 +7,7 @@ def parseWorld(text):
 	if(mo != None):
 		return scenario2(text)
 
-	regex = re.compile("홍길동")
+	regex = re.compile("김형우")
 	mo = regex.search(text)
 	if(mo != None):
 		return checkInfo(text)
