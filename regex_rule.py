@@ -66,20 +66,25 @@ def checkReservation(text):
 	num = ["성인 1"]
 
 	for i in dest:
-		if i!=arr[0]:
-			message+="목적도시, "
+		if i==arr[0]:
+			break
+		message+="목적도시, "
 	for i in start:
-		if i!=arr[1]:
-			message+="출발도시, "
+		if i==arr[1]:
+			break
+		message+="출발도시, "
 	for i in date:
-		if i!=arr[2]:
-			message+="출발날짜, "
+		if i==arr[2]:
+			break
+		message+="출발날짜, "
 	for i in price:
-		if i!=arr[3]:
-			message+="가격범위, "
+		if i==arr[3]:
+			break
+		message+="가격범위, "
 	for i in num:
-		if i!=arr[4]:
-			message+="인원수 "
+		if i==arr[4]:
+			break
+		message+="인원수 "
 
 	if(message!=""):
 		return message+"정보가 부족합니다."
