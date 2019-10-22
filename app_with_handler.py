@@ -35,9 +35,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-from konlpy.tag import Okt
 app = Flask(__name__)
-okt = Okt()
 @app.route("/main",methods=['GET'])
 def display_main() -> 'html':
     return render_template('test.html',title='main')
@@ -106,7 +104,7 @@ def message_text(event):
     logging.error(event.reply_token)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=okt.pos(event.message.text))
+        TextSendMessage(text=regex_rule.parseWorld(event.message.text))
     )
     #r = requests.post(url, data=contents, headers=headers)
 
