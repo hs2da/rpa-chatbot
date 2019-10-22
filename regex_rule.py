@@ -58,7 +58,9 @@ def checkReservation(text):
 	message=""
 	result = text.split(' ')
 	arr = ["0","0","0","0","0"]
-	arr = result
+	arr[0]=result[0]
+	arr[1]=result[1]
+	arr[2]=result[2]
 	dest = ["방콕","서울"]
 	start = ["방콕","서울"]
 	date = ["11-21"]
@@ -87,7 +89,7 @@ def checkReservation(text):
 		message+="인원수 "
 
 	if(message!=""):
-		return message+"정보가 부족합니다."
+		return message+"정보를 입력해주세요"
 
 
 	reservation = ["방콕","인천","11월21일","60만원~80만원","성인 1"]
